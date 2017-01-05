@@ -173,7 +173,6 @@ func main() {
 	log.Printf("Starting: will check & update IP every %v", updateFreq)
 	for range time.Tick(updateFreq) {
 		// Get current IP from service.
-		log.Printf("Checking IP")
 		curIP, err := checkIP(cfg)
 		if err != nil {
 			log.Printf("Could not check IP: %v", err)
