@@ -165,11 +165,13 @@ func main() {
 		log.Fatalf("Could not read state: %v", err)
 	}
 
+	updateFreq := time.Duration(cfg.UpdateFrequency * float64(time.Second))
+	http.DefaultClient.Timeout = updateFreq
+
 	// googIP tracks our conception of what Google thinks our IP is.
 	// It normally differs from the state IP only briefly between updating the goog IP and the state.
 	// It may differ for a longer period of time if there are errors writing the new state.
 	googIP := s.IP
-	updateFreq := time.Duration(cfg.UpdateFrequency * float64(time.Second))
 	log.Printf("Starting: will check & update IP every %v", updateFreq)
 	for range time.Tick(updateFreq) {
 		// Get current IP from service.
