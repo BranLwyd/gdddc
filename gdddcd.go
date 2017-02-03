@@ -64,7 +64,7 @@ func readConfig() (*config, error) {
 		c.UpdateFrequency = 60
 	}
 	if c.IPCheckURL == "" {
-		log.Printf("ip_check_url unspecified in config, using default of https://domans.google.com/checkip")
+		log.Printf("ip_check_url unspecified in config, using default of https://domains.google.com/checkip")
 		c.IPCheckURL = "https://domains.google.com/checkip"
 	}
 	if c.UserAgent == "" {
